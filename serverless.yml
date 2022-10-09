@@ -1,0 +1,17 @@
+service: youngmonkey-sls
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: us-east-1
+  stage: v1
+  memorySize: 128
+
+functions:
+  notify:
+    handler: src/application/infra/sls/http/functions/notify.handle
+    events:
+      - httpApi:
+          path: /notify
+          method: post

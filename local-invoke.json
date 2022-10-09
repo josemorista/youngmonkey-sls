@@ -1,0 +1,10 @@
+{
+	"resource": "/",
+	"path": "/notify",
+	"httpMethod": "POST",
+	"body": {},
+	"headers": {
+		"Content-Type": "application/json"
+	},
+	"queryStringParameters": {}
+}
