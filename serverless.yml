@@ -1,6 +1,8 @@
 service: youngmonkey-sls
 frameworkVersion: '3'
 
+useDotenv: true
+
 provider:
   name: aws
   runtime: nodejs14.x
@@ -12,6 +14,7 @@ functions:
   notify:
     handler: src/application/infra/sls/http/functions/notify.handle
     events:
-      - httpApi:
+      - http:
           path: /notify
           method: post
+          cors: true

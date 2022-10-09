@@ -1,4 +1,4 @@
-const CommandBus = require('./CommandBus');
+const CommandBus = require('../../../bus/CommandBus');
 
 module.exports = class MemCommandBus extends CommandBus {
 	constructor() {

@@ -53,7 +53,7 @@ module.exports = class NotifyMembersObserver extends CommandObserver {
 	async notify(command) {
 		const order = await command.getPayload();
 		const members = await this.membersRepository.all();
-		Promise.allSettled(
+		await Promise.allSettled(
 			members.map(member =>
 				fetch(`https://graph.facebook.com/v14.0/${process.env.WHATSAPP_SENDER_ID}/messages`, {
 					method: 'POST',
@@ -76,6 +76,7 @@ module.exports = class NotifyMembersObserver extends CommandObserver {
 					}),
 					headers: {
 						'Content-type': 'application/json',
+						Authorization: `Bearer ${process.env.WHATSAPP_ACCESS_TOKEN}`,
 					},
 				})
 			)

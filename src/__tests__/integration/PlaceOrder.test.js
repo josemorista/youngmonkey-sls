@@ -5,7 +5,7 @@ const Order = require('../../domain/entities/Order');
 const Client = require('../../domain/entities/Client');
 
 const PlaceOrderCommand = require('../../application/commands/PlaceOrderCommand');
-const MemCommandBus = require('../../application/bus/MemCommandBus');
+const MemCommandBus = require('../../application/infra/mem/bus/MemCommandBus');
 const NotifyMembersObserver = require('../../application/observers/NotifyMembersObserver');
 const MemMembersRepository = require('../../application/infra/mem/repositories/MemMembersRepository');
 

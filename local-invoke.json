@@ -2,9 +2,10 @@
 	"resource": "/",
 	"path": "/notify",
 	"httpMethod": "POST",
-	"body": {},
+	"body": "{\"clientName\":\"client\",\"contactPhone\":99999999,\"enterprise\":\"Enterprise\",\"duration\":\"0-1 minuto\",\"reference\":\"https://link.com\",\"briefing\":\"Briefing\",\"services\":[\"Roteiro\"]}",
 	"headers": {
-		"Content-Type": "application/json"
+		"Content-Type": "application/json",
+		"Authorization": "2b7a2839e8067292e9eed9c263ef67f7"
 	},
 	"queryStringParameters": {}
 }
