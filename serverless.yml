@@ -9,6 +9,7 @@ provider:
   region: us-east-1
   stage: v1
   memorySize: 128
+  profile: ym
 
 functions:
   notify:
