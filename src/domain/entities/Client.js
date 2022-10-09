@@ -1,7 +1,8 @@
 module.exports = class Client {
-	constructor(name, contactPhone) {
+	constructor(name, contactPhone, enterprise) {
 		this.name = name;
 		this.contactPhone = contactPhone;
+		this.enterprise = enterprise;
 		this.#validateClient();
 	}
 

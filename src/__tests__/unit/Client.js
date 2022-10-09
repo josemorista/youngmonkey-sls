@@ -13,4 +13,9 @@ describe('Client unit tests', () => {
 			}).toThrow(`Missing client ${missing}`);
 		});
 	});
+
+	it('Should create a client with valid info', () => {
+		const client = new Client('client', 999999999, 'enterprise');
+		expect(client instanceof Client).toBeTruthy();
+	});
 });
