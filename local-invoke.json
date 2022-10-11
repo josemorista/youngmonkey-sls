@@ -1,6 +1,6 @@
 {
 	"resource": "/",
-	"path": "/notify",
+	"path": "/orders",
 	"httpMethod": "POST",
 	"body": "{\"clientName\":\"client\",\"contactPhone\":99999999,\"enterprise\":\"Enterprise\",\"duration\":\"0-1 minuto\",\"reference\":\"https://link.com\",\"briefing\":\"Briefing\",\"services\":[\"Roteiro\"]}",
 	"headers": {

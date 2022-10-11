@@ -12,10 +12,10 @@ provider:
   profile: ym
 
 functions:
-  notify:
-    handler: src/application/infra/sls/http/functions/notify.handle
+  placeOrder:
+    handler: src/application/infra/sls/http/functions/placeOrder.handle
     events:
       - http:
-          path: /notify
+          path: /orders
           method: post
           cors: true
