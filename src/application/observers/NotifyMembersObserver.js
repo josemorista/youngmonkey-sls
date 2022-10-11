@@ -25,19 +25,19 @@ module.exports = class NotifyMembersObserver extends CommandObserver {
 			},
 			{
 				type: 'text',
-				text: order.client.enterprise || '',
+				text: order.client.enterprise || '_',
 			},
 			{
 				type: 'text',
-				text: order.services.join(','),
+				text: order.services.join(', '),
 			},
 			{
 				type: 'text',
-				text: order.duration || '',
+				text: order.duration || '_',
 			},
 			{
 				type: 'text',
-				text: order.reference || '',
+				text: order.reference || '_',
 			},
 			{
 				type: 'text',
@@ -45,7 +45,7 @@ module.exports = class NotifyMembersObserver extends CommandObserver {
 			},
 			{
 				type: 'text',
-				text: order.briefing || '',
+				text: order.briefing || '_',
 			},
 		];
 	}
@@ -53,7 +53,8 @@ module.exports = class NotifyMembersObserver extends CommandObserver {
 	async notify(command) {
 		const order = await command.getPayload();
 		const members = await this.membersRepository.all();
-		await Promise.allSettled(
+		console.info('[ORDER]:', JSON.stringify(order));
+		const responses = await Promise.allSettled(
 			members.map(member =>
 				fetch(`https://graph.facebook.com/v14.0/${process.env.WHATSAPP_SENDER_ID}/messages`, {
 					method: 'POST',
@@ -78,8 +79,13 @@ module.exports = class NotifyMembersObserver extends CommandObserver {
 						'Content-type': 'application/json',
 						Authorization: `Bearer ${process.env.WHATSAPP_ACCESS_TOKEN}`,
 					},
-				})
+				}).then(response => response.json())
 			)
 		);
+		responses.forEach(response => {
+			if (response.status === 'rejected') {
+				console.error(JSON.stringify(response.value));
+			}
+		});
 	}
 };
